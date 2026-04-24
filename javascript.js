@@ -58,15 +58,11 @@ function playGame() {
 
     let humanSelection = getHumanChoice().toLowerCase();
     let computerSelection = getComputerChoice();
-    console.log(humanSelection);
-    console.log(computerSelection);
     
     while (humanSelection === computerSelection) {
       console.log("It's a tie! Play again.");
       humanSelection = getHumanChoice().toLowerCase();
       computerSelection = getComputerChoice();
-      console.log(humanSelection);
-      console.log(computerSelection);
     }
 
     playRound(humanSelection, computerSelection);
