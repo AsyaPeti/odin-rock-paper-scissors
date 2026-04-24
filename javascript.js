@@ -1,7 +1,6 @@
 // A function that randomly returns: "rock," "paper," or "scissors"
 function getComputerChoice() {
-  const random = Math.floor(Math.random() * 3) + 1;
-  console.log(random);
+  let random = Math.floor(Math.random() * 3) + 1;
   
   if (random === 1) {
     return "rock";
@@ -12,4 +11,10 @@ function getComputerChoice() {
   }
 }
 
-console.log(getComputerChoice());
+// This function asks the user to select "rock," "paper," or "scissors"
+function getHumanChoice() {
+  let choice = prompt("Rock, paper, or scissors?", "");
+  return choice.toLowerCase();
+}
+
+console.log(getHumanChoice());
