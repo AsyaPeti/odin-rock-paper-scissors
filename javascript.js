@@ -1,3 +1,5 @@
+alert(`Open the console in DevTools and enter "playGame()".`);
+
 // A function that randomly returns: "rock," "paper," or "scissors"
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3) + 1;
@@ -81,5 +83,3 @@ function playGame() {
     }
   }
 }
-
-playGame();
