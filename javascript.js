@@ -1,3 +1,7 @@
+// Two variables to track the score
+let humanScore = 0;
+let computerScore = 0;
+
 // A function that randomly returns: "rock," "paper," or "scissors"
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3) + 1;
@@ -16,5 +20,3 @@ function getHumanChoice() {
   let choice = prompt("Rock, paper, or scissors?", "");
   return choice.toLowerCase();
 }
-
-console.log(getHumanChoice());
