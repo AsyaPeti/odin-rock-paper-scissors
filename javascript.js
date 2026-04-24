@@ -1,7 +1,3 @@
-// Two variables to track the score
-let humanScore = 0;
-let computerScore = 0;
-
 // A function that randomly returns: "rock," "paper," or "scissors"
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3) + 1;
@@ -20,53 +16,70 @@ function getHumanChoice() {
   return choice = prompt("Rock, paper, or scissors?", "");
 }
 
-// This function compares players' choices and shows the results
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice == "rock") {
-    if (computerChoice == "rock") {
-      console.log("It's a tie! Play again.");
-    
-    } else if (computerChoice == "paper") {
-      console.log("You lose! Rock is covered by Paper.");
-      ++computerScore;
-    
-    } else if (computerChoice == "scissors") {
-      console.log("You win! Rock crushes Scissors.");
-      ++humanScore;
-    }
+// This function plays the game for five rounds
+function playGame() {
+  // Two variables to track the score
+  let humanScore = 0;
+  let computerScore = 0;
   
-  } else if (humanChoice == "paper") {
-    if (computerChoice == "rock") {
-      console.log("You win! Paper covers Rock.");
-      ++humanScore;
+  for (let round = 1; round <= 5; round++) {
+    console.log(`Round number ${round}.`);
     
-    } else if (computerChoice == "paper") {
-      console.log("It's a tie! Play again.");
-    
-    } else if (computerChoice == "scissors") {
-      console.log("You lose! Paper is cut by Scissors.");
-      ++computerScore;
+    // This function compares players' choices and shows the results
+    function playRound(humanChoice, computerChoice) {
+      if (humanChoice == "rock") {
+        if (computerChoice == "rock") {
+          console.log("It's a tie! Play again.");
+          --round;
+        } else if (computerChoice == "paper") {
+          console.log("You lose! Rock is covered by Paper.");
+          ++computerScore;
+        } else if (computerChoice == "scissors") {
+          console.log("You win! Rock crushes Scissors.");
+          ++humanScore;
+        }
+      
+      } else if (humanChoice == "paper") {
+        if (computerChoice == "rock") {
+          console.log("You win! Paper covers Rock.");
+          ++humanScore;
+        } else if (computerChoice == "paper") {
+          console.log("It's a tie! Play again.");
+          --round;
+        } else if (computerChoice == "scissors") {
+          console.log("You lose! Paper is cut by Scissors.");
+          ++computerScore;
+        }
+      
+      } else if (humanChoice == "scissors") {
+        if (computerChoice == "rock") {
+          console.log("You lose! Scissors are crushed by Rock.");
+          ++computerScore;
+        } else if (computerChoice == "paper") {
+          console.log("You win! Scissors cut paper.");
+          ++humanScore;
+        } else if (computerChoice == "scissors") {
+          console.log("It's a tie! Play again.");
+          --round;
+        }
+      }
     }
-  
-  } else if (humanChoice == "scissors") {
-    if (computerChoice == "rock") {
-      console.log("You lose! Scissors are crushed by Rock.");
-      ++computerScore;
+
+    let humanSelection = getHumanChoice().toLowerCase();
+    let computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    console.log(humanSelection);
+    console.log(computerSelection);
     
-    } else if (computerChoice == "paper") {
-      console.log("You win! Scissors cut paper.");
-      ++humanScore;
-    
-    } else if (computerChoice == "scissors") {
-      console.log("It's a tie! Play again.");
+    if (round < 5) {
+      console.log(`Current score: (human)${humanScore}:${computerScore}(computer)`);
+
+    } else {
+      if (humanScore > computerScore) {
+        console.log(`You win with the score: (human)${humanScore}:${computerScore}(computer)!`);
+      } else {
+        console.log(`You lose with the score: (human)${humanScore}:${computerScore}(computer).`);
+      }
     }
   }
 }
-
-const humanSelection = getHumanChoice().toLowerCase();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
-console.log(humanSelection);
-console.log(computerSelection);
-console.log(humanScore);
-console.log(computerScore);
