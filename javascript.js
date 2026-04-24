@@ -59,6 +59,7 @@ function playGame() {
     let humanSelection = getHumanChoice().toLowerCase();
     let computerSelection = getComputerChoice();
     
+    // A loop to handle tie cases
     while (humanSelection === computerSelection) {
       console.log("It's a tie! Play again.");
       humanSelection = getHumanChoice().toLowerCase();
@@ -67,6 +68,7 @@ function playGame() {
 
     playRound(humanSelection, computerSelection);
     
+    // Current or total score output
     if (round < 5) {
       console.log(`Current score: (human)${humanScore}:${computerScore}(computer)`);
 
