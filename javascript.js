@@ -13,7 +13,7 @@ function getComputerChoice() {
 
 // This function asks the user to select "rock," "paper," or "scissors"
 function getHumanChoice() {
-  return choice = prompt("Rock, paper, or scissors?", "");
+  return prompt("Rock, paper, or scissors?", "");
 }
 
 // This function plays the game for five rounds
@@ -81,3 +81,5 @@ function playGame() {
     }
   }
 }
+
+playGame();
