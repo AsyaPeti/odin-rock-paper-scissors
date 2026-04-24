@@ -28,10 +28,7 @@ function playGame() {
     // This function compares players' choices and shows the results
     function playRound(humanChoice, computerChoice) {
       if (humanChoice == "rock") {
-        if (computerChoice == "rock") {
-          console.log("It's a tie! Play again.");
-          --round;
-        } else if (computerChoice == "paper") {
+        if (computerChoice == "paper") {
           console.log("You lose! Rock is covered by Paper.");
           ++computerScore;
         } else if (computerChoice == "scissors") {
@@ -43,9 +40,6 @@ function playGame() {
         if (computerChoice == "rock") {
           console.log("You win! Paper covers Rock.");
           ++humanScore;
-        } else if (computerChoice == "paper") {
-          console.log("It's a tie! Play again.");
-          --round;
         } else if (computerChoice == "scissors") {
           console.log("You lose! Paper is cut by Scissors.");
           ++computerScore;
@@ -58,27 +52,33 @@ function playGame() {
         } else if (computerChoice == "paper") {
           console.log("You win! Scissors cut paper.");
           ++humanScore;
-        } else if (computerChoice == "scissors") {
-          console.log("It's a tie! Play again.");
-          --round;
         }
       }
     }
 
     let humanSelection = getHumanChoice().toLowerCase();
     let computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
     console.log(humanSelection);
     console.log(computerSelection);
+    
+    while (humanSelection === computerSelection) {
+      console.log("It's a tie! Play again.");
+      humanSelection = getHumanChoice().toLowerCase();
+      computerSelection = getComputerChoice();
+      console.log(humanSelection);
+      console.log(computerSelection);
+    }
+
+    playRound(humanSelection, computerSelection);
     
     if (round < 5) {
       console.log(`Current score: (human)${humanScore}:${computerScore}(computer)`);
 
     } else {
       if (humanScore > computerScore) {
-        console.log(`You win with the score: (human)${humanScore}:${computerScore}(computer)!`);
+        console.log(`You've won the game with the total score: (human)${humanScore}:${computerScore}(computer)!`);
       } else {
-        console.log(`You lose with the score: (human)${humanScore}:${computerScore}(computer).`);
+        console.log(`You've lost the game with the total score: (human)${humanScore}:${computerScore}(computer).`);
       }
     }
   }
